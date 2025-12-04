@@ -28,37 +28,45 @@ public class App {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("첫 번째 숫자를 입력하세요: ");
-        int value1 = sc.nextInt();
-        System.out.print("두 번째 숫자를 입력하세요: ");
-        int value2 = sc.nextInt();
+        do {
+            System.out.print("첫 번째 숫자를 입력하세요: ");
+            int value1 = sc.nextInt();
+            System.out.print("두 번째 숫자를 입력하세요: ");
+            int value2 = sc.nextInt();
+            System.out.print("사칙연산 기호를 입력하세요: ");
+            char operations = sc.next().charAt(0);
 
-        System.out.print("사칙연산 기호를 입력하세요: ");
-        char operations = sc.next().charAt(0);
+            sc.nextLine();  //아직 잔여 개행문자가 남아있어 아래 text를 입력 받을 때, nextLine이 동작하지 않는다, 그래서 해당 코드로 개행문자를 소비해준다.
 
-        int result = 0;
-        switch (operations) {
-            case '+':
-                result = value1 + value2;
-                break;
-            case '-':
-                result = value1 - value2;
-                break;
-            case '*', 'x','X':  //곱하기 기호는 혼동이 쉽기 때문에 3가지의 경우를 case로 잡음
-                result = value1 * value2;
-                break;
-            case '/':
-                /// if문이 / 연산보다 늦게 오면 자바 자체 오류처리 발생
-                if (value2 == 0) {
-                    System.out.println("분모가 0이 될 순 없습니다.");
-                    System.exit(0);  ///강제 종료 하지 않으면 swith 문 밖의 결과가 출력 되므로 프로그램 강제 종료
-                }
-                result = value1 / value2;
-                break;
-            default:
-                System.out.println("사칙 연산 기호는 더하기 +, 빼기 -, 곱하기 (*, x, X), 나누기 /로 입력해 주세요");
-        }
-        System.out.println("결과: " + result);
+            int result = 0;
+            switch (operations) {
+                case '+':
+                    result = value1 + value2;
+                    break;
+                case '-':
+                    result = value1 - value2;
+                    break;
+                case '*', 'x','X':  //곱하기 기호는 혼동이 쉽기 때문에 3가지의 경우를 case로 잡음
+                    result = value1 * value2;
+                    break;
+                case '/':
+                    /// if문이 / 연산보다 늦게 오면 자바 자체 오류처리 발생
+                    if (value2 == 0) {
+                        System.out.println("분모가 0이 될 순 없습니다.");
+                        System.exit(0);  ///강제 종료 하지 않으면 swith 문 밖의 결과가 출력 되므로 프로그램 강제 종료
+                    }
+                    result = value1 / value2;
+                    break;
+                default:
+                    System.out.println("사칙 연산 기호는 더하기 +, 빼기 -, 곱하기 (*, x, X), 나누기 /로 입력해 주세요");
+            }
+            System.out.println("결과: " + result);
 
+            System.out.print("더 계산하시겠습니까? (exit 입력 시 종료): ");
+            String text = sc.nextLine();
+            if (text.equals("exit")) {
+                break;
+            }
+        } while (true);
     }
 }
