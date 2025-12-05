@@ -28,6 +28,7 @@ public class App {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Calculator calculator = new Calculator();  //Calculator 객체 생성
+        int count = 0;  //인덱스 값을 알기위해 반복 횟수 카운트
         do {
             System.out.print("첫 번째 숫자를 입력하세요: ");
             int value1 = sc.nextInt();
@@ -43,18 +44,32 @@ public class App {
 
             calculator.addNumbers(result);  //ArrayList에 결과를 추가시킴
 
-            int count = 0;  //인덱스 값을 알기위해 반복 횟수 카운트
+
             //calculator.setNumbers(count, result);
-            int a = calculator.getNumbers(count);
+            int a = calculator.getNumbers(count++);
             System.out.println("게터 결과: " + a);
 
-            count++;
 
+            while(true){
+                System.out.println("첫 결과를 삭제하시겠습니까? Y/N");
+                char choice = sc.next().charAt(0);
+                if (choice == 'Y') {
+                    calculator.removeResult();
+                    count--;  //삭제 시 전체적으로 인덱스가 밀리므로 -1 해줘야 함
+                    break;
+                } else if (choice == 'N') {
+                    break;
+                } else {
+                    System.out.println("문자를 잘못 입력하셨습니다.");
+                }
+            }
 
+            sc.nextLine();
 
             System.out.print("더 계산하시겠습니까? (exit 입력 시 종료): ");
             String text = sc.nextLine();
             if (text.equals("exit")) {
+                System.out.println("모든 계산 결과: " + calculator.getAllNumbers());
                 break;
             }
         } while (true);

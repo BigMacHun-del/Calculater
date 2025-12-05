@@ -40,8 +40,18 @@ public class Calculator {
         return numbers.get(count);   //.get(인덱스)로 조회해서 반환
     }
 
+    public ArrayList<Integer> getAllNumbers() {   //모든 리스트의 결과를 출력
+        return numbers;
+    }
+
     public void setNumbers(int count, int result) {  //수정할 수 있는 Setter 메서드
         numbers.set(count, result);   //기존에 존재하는 인덱스를 수정
+    }
+
+    public void removeResult() {
+        //numbers.remove(numbers.size() - 1);  //가장 최근에 들어온 정보 삭제
+        System.out.println("삭제 완료: " + numbers.get(0));
+        numbers.remove(0); //가장 먼저 저장된 정보 삭제(0번 인덱스만 삭제) --> 인줄 알았으나 0번 인덱스 삭제하면 1번 인덱스가 0번이 됨
     }
 
 
