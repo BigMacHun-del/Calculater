@@ -39,8 +39,18 @@ public class App {
             sc.nextLine();  //아직 잔여 개행문자가 남아있어 아래 text를 입력 받을 때, nextLine이 동작하지 않는다, 그래서 해당 코드로 개행문자를 소비해준다.
 
             int result = calculator.calculate(value1, value2, operations);  //calculate 메서드 호출
-
             System.out.println("결과: " + result);
+
+            calculator.addNumbers(result);  //ArrayList에 결과를 추가시킴
+
+            int count = 0;  //인덱스 값을 알기위해 반복 횟수 카운트
+            //calculator.setNumbers(count, result);
+            int a = calculator.getNumbers(count);
+            System.out.println("게터 결과: " + a);
+
+            count++;
+
+
 
             System.out.print("더 계산하시겠습니까? (exit 입력 시 종료): ");
             String text = sc.nextLine();
