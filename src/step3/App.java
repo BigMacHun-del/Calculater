@@ -17,24 +17,24 @@ public class App {
         int count = 0;  //인덱스 값을 알기위해 반복 횟수 카운트
         do {
             System.out.print("첫 번째 숫자를 입력하세요: ");
-            int value1 = sc.nextInt();
+            double value1 = sc.nextInt();
             System.out.print("두 번째 숫자를 입력하세요: ");
-            int value2 = sc.nextInt();
+            double value2 = sc.nextInt();
             System.out.print("사칙연산 기호를 입력하세요: ");
             operations = sc.next().charAt(0);
 
             sc.nextLine();  //아직 잔여 개행문자가 남아있어 아래 text를 입력 받을 때, nextLine이 동작하지 않는다, 그래서 해당 코드로 개행문자를 소비해준다.
 
-            int result = calculator.calculate(value1, value2, operations);  //calculate 메서드 호출
+            Double result = calculator.calculate(value1, value2, operations).doubleValue();  //calculate 메서드 호출
             System.out.println("결과: " + result);
 
             calculator.addNumbers(result);  //ArrayList에 결과를 추가시킴
 
 
             //calculator.setNumbers(count, result);
-            int a = calculator.getNumbers(count++);
-            System.out.println("게터 결과: " + a);
-
+            Double getresult = calculator.getNumbers(count).doubleValue();
+            System.out.println("리스트 추가 완료: " + getresult);
+            count++;
 
             while(true){
                 System.out.println("첫 결과를 삭제하시겠습니까? Y/N");
