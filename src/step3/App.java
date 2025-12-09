@@ -19,8 +19,11 @@ public class App {
                 double value2 = sc.nextDouble();
                 System.out.print("사칙연산 기호를 입력하세요: ");
                 operations = sc.next().charAt(0);
-
                 sc.nextLine();  //아직 잔여 개행문자가 남아있어 아래 text를 입력 받을 때, nextLine이 동작하지 않는다, 그래서 해당 코드로 개행문자를 소비해준다.
+
+                if(value2 == 0 && operations == '/') {
+                    throw new ArithmeticException();
+                }
 
                 Double result = calculator.calculate(value1, value2, operations).doubleValue();  //calculate 메서드 호출
                 System.out.println("결과: " + result);
@@ -68,9 +71,9 @@ public class App {
             }catch (NullPointerException e) {
                 System.out.println("사칙 연산 기호는 더하기 +, 빼기 -, 곱하기 (*, x, X), 나누기 /로 입력해 주세요");
             }
-//            catch (ArithmeticException e) { // 0으로 나눴을 때
-//                System.out.println("분모가 0이 될 순 없습니다.");
-//            }
+            catch (ArithmeticException e) { // 0으로 나눴을 때
+                System.out.println("분모가 0이 될 순 없습니다.");
+            }
 
         } while (true);
     }

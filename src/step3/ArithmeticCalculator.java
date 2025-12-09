@@ -36,10 +36,6 @@ public class ArithmeticCalculator <T extends Number>{
                 result = value1.doubleValue() * value2.doubleValue();
                 break;
             case DIV:
-                if (value2.doubleValue() == 0) {
-                    System.out.println("분모가 0이 될 순 없습니다.");
-                    System.exit(0);  ///강제 종료 하지 않으면 swith 문 밖의 결과가 출력 되므로 프로그램 강제 종료
-                }
                 result = value1.doubleValue() / value2.doubleValue();
                 break;
 
