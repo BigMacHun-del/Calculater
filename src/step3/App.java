@@ -12,6 +12,18 @@ public class App {
         OperatorType operatorType = OperatorType.SUM;
         char operations;
 
+//        BiggerResult biggerResult =((number1, number2) -> {   //람다식 활용
+//            if (number1 > number2) {
+//                return number1;
+//            } else if (number1 < number2) {
+//                return number2;
+//            } else {
+//                System.out.println("두 값은 동일합니다.");
+//                return number1;
+//            }
+//        });
+
+        //double choose = biggerResult.choose()
 
 
         int count = 0;  //인덱스 값을 알기위해 반복 횟수 카운트
@@ -51,6 +63,14 @@ public class App {
             }
 
             sc.nextLine();
+
+            //람다 스트림 활용
+            Scanner sc2 = new Scanner(System.in);
+            System.out.print("비교할 기준 값을 입력하세요: ");
+            double baseValue = sc2.nextDouble();
+            System.out.print("더 큰 값은 : ");
+            System.out.println(calculator.BiggerResult(baseValue));
+
 
             System.out.print("더 계산하시겠습니까? (exit 입력 시 종료): ");
             String text = sc.nextLine();

@@ -32,7 +32,7 @@ public class Calculator {
         return result;
     }
 
-    public void addNumbers(int result) {   //결과 값을 ArrayList에 추가 함
+    public void addNumbers(int result) {   //결과 값을 ArrayList에 추가 Setter
         numbers.add(result);
     }
 
@@ -42,10 +42,6 @@ public class Calculator {
 
     public ArrayList<Integer> getAllNumbers() {   //모든 리스트의 결과를 출력
         return numbers;
-    }
-
-    public void setNumbers(int count, int result) {  //수정할 수 있는 Setter 메서드
-        numbers.set(count, result);   //기존에 존재하는 인덱스를 수정
     }
 
     public void removeResult() {

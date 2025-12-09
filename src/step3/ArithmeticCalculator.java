@@ -1,6 +1,8 @@
 package step3;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class ArithmeticCalculator <T extends Number>{
     private ArrayList<T> numbers = new ArrayList<>();  //순서가 있고, 중복 허용이 되어야 하므로 ArrayList 사용
@@ -90,4 +92,12 @@ public class ArithmeticCalculator <T extends Number>{
         System.out.println("삭제 완료: " + numbers.get(0));
         numbers.remove(0); //가장 먼저 저장된 정보 삭제(0번 인덱스만 삭제) --> 인줄 알았으나 0번 인덱스 삭제하면 1번 인덱스가 0번이 됨
     }
+
+    //람다 스트림 활용
+    public List<T> BiggerResult(double baseValue) {   //리스트 전체 리턴
+        return numbers.stream()
+                .filter(n -> n.doubleValue() > baseValue)       //filter로 기준값보다 더 큰 값들만 필터링
+                .collect(Collectors.toList());
+    }
+
 }
